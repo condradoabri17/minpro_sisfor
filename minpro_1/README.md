@@ -225,7 +225,7 @@ while True:
 
 ## Penjelasan
 
-1. **Inisialisasi variabel 
+1. **Inisialisasi variabel**
 
 `riwayat_servis = []`
 
