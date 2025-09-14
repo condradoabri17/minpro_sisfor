@@ -39,7 +39,8 @@
   "deleteFileOption": "trash",
   "expandedSpaces": [
     "/",
-    "//minpro_1"
+    "//minpro_1",
+    "//minpro_1/minpro_1/asset"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",

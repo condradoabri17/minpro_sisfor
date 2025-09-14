@@ -310,5 +310,94 @@ if menu == "1":
 - Pengecekan dilakukan dengan perintah `if len(riwayat_servis) == 0` yang artinya cek jumlah baris yang ada didalam list `riwayat_servis` (fungsi `len` adalah untuk mengecek baris dalam sebuah list atau tuple atau variabel). 
 - jika tidak ada baris alias == 0 maka progam akan mencetak "Belum ada data riwayat servis"
 - Jika ada, maka program akan mencetak seluruh data dengan cara setiap data akan dipanggil dengan `len(riwayat_servis) >= 1` yang artinya program memanggil baris 1 dari list (bukan index list yang memakai [0],[1], [2]). setelah baris 1 dipanggil barulah index yang ada di baris satu yaitu index[0] akan dipanggil dengan `data = riwayat_servis[0]`.
-- artinya bahwa tam
-- 
+- artinya bahwa tampilkan data dari index pertama di list `riwayat_servis`
+- Hal demikian terjadi untuk data di index 1 dan 2.
+- Kesimpulannya adalah program akan membaca ketiga baris dari `riwayat_servis` kemudian mengambil nilai di tuple `data` berdasarkan inisialisasi index di list riwayat_index.
+
+5. **Mengedit data**
+```python
+ elif menu == "3":
+        print("\n Edit Riwayat Servis ")
+        if len(riwayat_servis) == 0:
+            print("Belum ada data untuk diedit.")
+        else:
+            index = int(input("Pilih data yang mau diedit: "))
+            if index < len(riwayat_servis):
+                data = riwayat_servis[index]
+                print("Data lama:")
+                print("ID:", data[0])
+                print("Perangkat:", data[1])
+                print("Tanggal:", data[2])
+                print("Kerusakan:", data[3])
+                print("Status:", data[4])
+                print("\nMasukkan data baru (biarkan kosong jika tidak ingin diubah):")
+                id_Perangkat = input("ID Perangkat baru: ") or data[0]
+                nama_Perangkat = input(
+                    "Nama Perangkat baru: ") or data[1]
+                tgl_servis = input("Tanggal Servis baru: ") or data[2]
+                kerusakan = input("Deskripsi Kerusakan baru: ") or data[3]
+                status = input("Status baru: ") or data[4]
+
+                riwayat_servis[index] = ( id_Perangkat, nama_Perangkat, tgl_servis, kerusakan, status)
+
+                print("\n Data berhasil diedit!")
+            else:
+                print(" Data tidak ada!")
+```
+
+- Pertama program akan mengecek isi `menu` yang diinput oleh user.
+- jika user menginput 3 maka program akan masuk ke fitur edit data riwayat maintenance
+- Lalu program akan mengecek apakah sudah ada data didalam `riwayat_servis` atau belum dengan fitur `if len(riwayat_servis) == 0:`  yang artinya jika jumlah baris (diketahui menggunakan `len`) == 0 alias tidak ada, maka program akan mencetak pesan bahwa data tidak ada dengan kode `print("Belum ada data untuk diedit.")`.
+- Jika data memang ada di `riwayat_service`, maka user diminta untuk menginput **baris** keberapa yang mereka pilih untuk di edit di list `riwayat_servis`, untuk kemudian ditampung di variabel `index` dengan kode ` index = int(input("Pilih data yang mau diedit: "))`
+- Kemudian program akan mengecek, jika isi variabel `index` adalah kurang dari jumlah baris yang didalam list `riwayat_servis`, maka isi dari tuple `data` akan diinisialisasi berdasarkan isi dari variabel `index` tadi. jadi jika user mengisi misalnya "1" maka program akan memanggil data yang berada di baris satu list `riwayat_peminjaman.
+- Setelah itu program akan menprint tiap data dibaris yang telah dipilih dengan kode contohnya `print("ID:", data[0])` yang artinya id akan menampilkan index ke-0 dari tuple data yang ada di list riwayat_servis
+- setelah data lama ditampilkan maka program akan mempersilahkan user untuk menginput data baru menggantikan data yang lama dengan kode `  print("\nMasukkan data baru (biarkan kosong jika tidak ingin diubah):")` 
+- Kemudian untuk mencegah agar tidak semua data harus diganti (bisa saja user hanya ingin mengganti 1 data tidak semua) maka pada bagian inputan ditambahkan perintah `or data[0]` yang artinya atau data tetap sesuai di index-0 di list saja
+- Setelah semua diinput, semua data akan disimpan kembali ke list `riwayat_servis` pada index yang ada didalam variabel `index`
+
+6. **Menghapus Data**
+```python
+elif menu == "4":
+        print("\n Hapus Riwayat Servis ")
+        if len(riwayat_servis) == 0:
+            print("Tidak ada data untuk dihapus.")
+        else:
+            index = int(input("Pilih data yang mau dihapus : "))
+            if index < len(riwayat_servis):
+                riwayat_servis.pop(index)
+                print("Data berhasil dihapus!")
+            else:
+                print(" Data tidak ada!")
+```
+- pertama, program akan mengecek apakah ada baris didalam list `riwayat_servis` dengan `if len(riwayat_servis) == 0:`. jika baris di list `riwayat_servis` , kosong alias == 0, maka progam akan mencetak bahwa data untuk dihapus tidak ada
+- jika baris ada maka user akan diminta untuk menginput pada baris berapa di list riwayat_servis yang mau dihapus. angka baris tersebut akan ditampung di variabel `index`
+- Kemudian program akan mengecek jika data yang diinput kedalam `index` lebih kecil daripada jumlah baris di list `riwayat)_servis`
+- Jika iya maka program akan mulai menghapus data di riwayat_servis berdasarkan baris di `index` yang telah diinput saja
+
+5. **Program keluar
+
+```python
+ elif menu == "5":
+        print("\nTerima kasih, program selesai.")
+        break
+```
+
+- Jika user memilih menu 5 maka program akan mencetak kata terimakasih 
+- Setelah program mencetak kata teriamkasih, maka program akan langsung berhenti karena ada perintah `break` yang artinya distop
+
+# Output
+
+**Tambah Riwayat**
+![](asset/output1.jpg)
+
+**Fitur kedua melihat data yang sudah diinput**
+![](asset/output2.jpg)
+
+**Fitur ketiga untuk mengedit data yangg telah diinput**
+![](asset/output_1.jpg)
+
+**Fitur keempat untuk menghapus data**
+![](asset/output3.jpg)
+
+**Jika mengisi menu 5 maka program akan otomatis berhenti**
+![](asset/output(2).jpg)
