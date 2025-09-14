@@ -374,7 +374,7 @@ elif menu == "4":
 - Kemudian program akan mengecek jika data yang diinput kedalam `index` lebih kecil daripada jumlah baris di list `riwayat)_servis`
 - Jika iya maka program akan mulai menghapus data di riwayat_servis berdasarkan baris di `index` yang telah diinput saja
 
-5. **Program keluar
+5. **Program keluar**
 
 ```python
  elif menu == "5":
